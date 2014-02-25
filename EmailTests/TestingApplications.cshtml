@@ -1,0 +1,26 @@
+﻿@using Litmus.Apis.Previews
+@using Litmus.Apis.Previews.Models
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Fetch Email Testing Applications";
+
+    var litmusPreviewsApi = new PreviewsApi(AuthHelper.ApiUsername, AuthHelper.ApiPassword);
+    var returnedTest = new List<TestingApplication>();
+    returnedTest = litmusPreviewsApi.GetEmailTestingApplications();
+}
+
+<h2>Supported Email Testing Applications</h2>
+
+<table>
+    @foreach (var result in @returnedTest)
+    {
+        <tr>
+            <td>
+                @result.ApplicationName
+            </td>
+            <td>@result.ApplicationLongName</td>
+
+        </tr>
+    }
+
+</table>
