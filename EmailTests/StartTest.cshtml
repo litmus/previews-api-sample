@@ -1,0 +1,37 @@
+﻿@using Litmus.Apis.Previews
+@using Litmus.Apis.Previews.Models
+@using Microsoft.Ajax.Utilities
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Start Email Test";
+
+    var litmusPreviewsApi = new PreviewsApi(AuthHelper.ApiUsername, AuthHelper.ApiPassword);
+    var returnedTest = new EmailTest();
+    
+    if (IsPost)
+    {
+        var emailTest = new EmailTest
+        {
+            TestingApplications = new List<TestingApplication>
+            {
+                new TestingApplication { ApplicationName = "gmailnew"},
+                new TestingApplication { ApplicationName = "iphone5s"}
+            }
+        };
+        
+        returnedTest = litmusPreviewsApi.CreateEmailTest(emailTest);
+    }
+    
+}
+<h2>Starting Tests</h2>
+<p>Starting tests is one of the most important things you'll want to be able to do.</p>
+
+<form method="POST">
+    <input type="submit" value="Submit a Test"/>
+</form>
+
+@if (!returnedTest.InboxGuid.IsNullOrWhiteSpace()){
+    <text>Test created!  First, send your message to : <a href='mailto:@returnedTest.InboxGuid&#64;emailtests.com'>@returnedTest.InboxGuid&#64;emailtests.com</a><br /></text>
+    <text>Then click <a href="FetchResults?test=@returnedTest.Id">here</a> to start polling for results for this test.<br /></text>
+}
+

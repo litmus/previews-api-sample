@@ -23,7 +23,7 @@ namespace Litmus.Apis.Previews.Models
         public string WindowImageNoContentBlocking { get; set; }
         public string PlatformName { get; set; }
         public int AverageTimeToProcess { get; set; }
-        public SpamHeader[] SpamHeaders { get; set; }
+        public List<SpamHeader> SpamHeaders { get; set; }
         public string WindowImageThumb { get; set; }
         public string RenderedHtmlUrl { get; set; }
         public string PlatformLongName { get; set; }
@@ -37,7 +37,7 @@ namespace Litmus.Apis.Previews.Models
         public bool DesktopClient { get; set; }
         public string WindowImageThumbContentBlocking { get; set; }
         public int Id { get; set; }
-        public ResultType ResultType { get; set; }
+        public int ResultType { get; set; }
         public string FullpageImageNoContentBlocking { get; set; }
         public string ApplicationLongName { get; set; }
     }

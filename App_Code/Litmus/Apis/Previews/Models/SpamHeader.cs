@@ -12,7 +12,7 @@ namespace Litmus.Apis.Previews.Models
     public class SpamHeader
     {
         public string Key { get; set; }
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public int Rating { get; set; }
     }

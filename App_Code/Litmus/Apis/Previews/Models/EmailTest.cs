@@ -10,7 +10,7 @@ namespace Litmus.Apis.Previews.Models
     /// </summary>
     public class EmailTest
     {
-        public TestingApplication[] TestingApplications { get; set; }
+        public List<TestingApplication> TestingApplications { get; set; }
         public string State { get; set; }
         public string InboxGuid { get; set; }
         public int Id { get; set; }
