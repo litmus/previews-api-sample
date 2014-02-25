@@ -2,7 +2,7 @@
 @using Litmus.Apis.Previews.Models
 @{
     Layout = "~/_SiteLayout.cshtml";
-    Page.Title = "Fetch Email Test";
+    Page.Title = "Fetch Links Test";
 
     var litmusPreviewsApi = new PreviewsApi(AuthHelper.ApiUsername, AuthHelper.ApiPassword);
     var returnedTest = new LinksTest();
@@ -14,6 +14,7 @@
     
 }
 
+<h2>Links Test Result</h2>
 <label>Test Id: </label> @returnedTest.Id<br />
 
 <label>Status: </label> @returnedTest.State

@@ -1,0 +1,52 @@
+﻿@using Litmus.Apis.Previews
+@using Litmus.Apis.Previews.Models
+@using Microsoft.Ajax.Utilities
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Code Analysis";
+
+    var litmusPreviewsApi = new PreviewsApi(AuthHelper.ApiUsername, AuthHelper.ApiPassword);
+    var returnedTest = new CodeAnalysisTest();
+
+    if (IsPost)
+    {
+        var html = File.ReadAllText(Server.MapPath("Example.html"));
+
+        returnedTest = litmusPreviewsApi.CreateCodeAnalysisTest(html);
+    }
+
+}
+<h2>Code Analysis</h2>
+<p>Click the button below to run a code analysis test with sample HTML we've provided.</p>
+
+<form method="POST">
+    <input type="submit" value="Submit a Code Analysis" />
+</form>
+
+@if (returnedTest.CompatibilityRulesCount > 0)
+{
+    <text>Compatibility Rules: @returnedTest.CompatibilityRulesCount</text>
+    <h2>HTML Problems</h2>
+    <table>
+        @foreach (var problem in returnedTest.HtmlProblems)
+        {
+            <tr>
+                <td>Line Number: @problem.LineNumber</td>
+                <td>Description: @problem.Description</td>
+            </tr>
+        }
+    </table>
+
+    <h2>Compatibility Problems</h2>
+    <table>
+        @foreach (var problem in returnedTest.CompatibilityProblems)
+        {
+            <tr>
+                <td style="width:250px;">@String.Join(", ", problem.ApiIds)</td>
+                <td>Line Number: @problem.LineNumber</td>
+                <td>Description: @problem.Description</td>
+            </tr>
+        }
+    </table>
+}
+
