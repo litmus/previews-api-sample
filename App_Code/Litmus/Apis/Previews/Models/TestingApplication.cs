@@ -37,7 +37,7 @@ namespace Litmus.Apis.Previews.Models
         public bool DesktopClient { get; set; }
         public string WindowImageThumbContentBlocking { get; set; }
         public int Id { get; set; }
-        public int ResultType { get; set; }
+        public ResultType ResultType { get; set; }
         public string FullpageImageNoContentBlocking { get; set; }
         public string ApplicationLongName { get; set; }
     }

@@ -1,6 +1,11 @@
 ﻿namespace Litmus.Apis.Previews.Models
 {
-    public class TestType
+    /// <summary>
+    /// Summary description for TestType
+    /// </summary>
+    public enum TestType
     {
+        Email,
+        Page
     }
 }

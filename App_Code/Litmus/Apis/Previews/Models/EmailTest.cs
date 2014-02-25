@@ -18,7 +18,7 @@ namespace Litmus.Apis.Previews.Models
         public string Subject { get; set; }
         public string Html { get; set; }
         public string ZipFile { get; set; }
-        public string TestType { get; set; }
+        public TestType TestType { get; set; }
         public bool Sandbox { get; set; }
         public string UserGuid { get; set; }
         public bool Error { get; set; }
