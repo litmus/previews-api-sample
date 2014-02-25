@@ -200,22 +200,22 @@ namespace Litmus.Apis.Previews
 
         #region Links Test
 
-        public LinksTest CreateLinksTest(LinksTest test)
+        public LinksTest CreateLinksTest(string html)
         {
             var request = new RestRequest("/api/v1/LinkTests", Method.POST);
             request.RequestFormat = DataFormat.Json;
-            request.AddBody(test);
+            request.AddBody(html);
 
             var response2 = restClient.Execute<LinksTest>(request);
 
             return response2.Data;
         }
 
-        public async Task<LinksTest> CreateLinksTestAsync(LinksTest test)
+        public async Task<LinksTest> CreateLinksTestAsync(string html)
         {
             var request = new RestRequest("/api/v1/LinkTests", Method.POST);
             request.RequestFormat = DataFormat.Json;
-            request.AddBody(test);
+            request.AddBody(html);
 
             var response2 = await restClient.ExecuteTaskAsync<LinksTest>(request);
 

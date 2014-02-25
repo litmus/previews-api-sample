@@ -1,0 +1,31 @@
+﻿@using Litmus.Apis.Previews
+@using Litmus.Apis.Previews.Models
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Fetch Page Test";
+
+    var litmusPreviewsApi = new PreviewsApi(AuthHelper.ApiUsername, AuthHelper.ApiPassword);
+    var returnedTest = new PageTest();
+    
+    if (Request["test"] != null)
+    {
+        returnedTest = litmusPreviewsApi.GetPageTest(int.Parse(Request["test"]));
+    }
+    
+}
+
+<label>Test Id: </label> @returnedTest.Id<br />
+
+<label>Status: </label> @returnedTest.State
+
+<table>
+    @foreach(var result in @returnedTest.TestingApplications){
+    <tr>
+        <td>@result.ApplicationLongName</td>
+        <td>
+            <img src="http://@result.FullpageImage" />
+        </td>
+    </tr>
+    }
+
+</table>

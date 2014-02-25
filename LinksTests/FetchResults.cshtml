@@ -1,0 +1,31 @@
+﻿@using Litmus.Apis.Previews
+@using Litmus.Apis.Previews.Models
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Fetch Email Test";
+
+    var litmusPreviewsApi = new PreviewsApi(AuthHelper.ApiUsername, AuthHelper.ApiPassword);
+    var returnedTest = new LinksTest();
+    
+    if (Request["test"] != null)
+    {
+        returnedTest = litmusPreviewsApi.GetLinksTest(int.Parse(Request["test"]));
+    }
+    
+}
+
+<label>Test Id: </label> @returnedTest.Id<br />
+
+<label>Status: </label> @returnedTest.State
+
+<table>
+    
+    <tr>
+        <td>Number of Links: @returnedTest.Links.Count</td>
+        <td>
+            <img src="@returnedTest.ImageUrl" />
+        </td>
+    </tr>
+    
+
+</table>

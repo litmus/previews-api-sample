@@ -1,0 +1,37 @@
+﻿@using Litmus.Apis.Previews
+@using Litmus.Apis.Previews.Models
+@using Microsoft.Ajax.Utilities
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Start Page Test";
+
+    var litmusPreviewsApi = new PreviewsApi(AuthHelper.ApiUsername, AuthHelper.ApiPassword);
+    var returnedTest = new PageTest();
+    
+    if (IsPost)
+    {
+        var pageTest = new PageTest
+        {
+            TestingApplications = new List<TestingApplication>
+            {
+                new TestingApplication { ApplicationName = "ie11"},
+                new TestingApplication { ApplicationName = "chromelatestosx"}
+            },
+            Url = "http://www.litmus.com"
+        };
+
+        returnedTest = litmusPreviewsApi.CreatePageTest(pageTest);
+    }
+    
+}
+<h2>Starting Tests</h2>
+<p>Starting tests is one of the most important things you'll want to be able to do.</p>
+
+<form method="POST">
+    <input type="submit" value="Submit a Page Test"/>
+</form>
+
+@if (!returnedTest.Error && IsPost){
+    <text>Test created!  Click <a href="FetchResults?test=@returnedTest.Id">here</a> to start polling for results for this test.<br /></text>
+}
+
