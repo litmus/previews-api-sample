@@ -88,9 +88,9 @@ namespace Litmus.Apis.Previews
             return response2.Data;
         }
 
-        public List<TestingApplication> GetEmaiTestingApplications()
+        public List<TestingApplication> GetEmailTestingApplications()
         {
-            var request = new RestRequest("GET /api/v1/EmailTests/TestingApplications", Method.GET);
+            var request = new RestRequest("/api/v1/EmailTests/TestingApplications", Method.GET);
             request.RequestFormat = DataFormat.Json;
 
             var response2 = restClient.Execute<List<TestingApplication>>(request);
@@ -98,9 +98,9 @@ namespace Litmus.Apis.Previews
             return response2.Data;
         }
 
-        public async Task<List<TestingApplication>> GetEmaiTestingApplicationsAsync()
+        public async Task<List<TestingApplication>> GetEmailTestingApplicationsAsync()
         {
-            var request = new RestRequest("GET /api/v1/EmailTests/TestingApplications", Method.GET);
+            var request = new RestRequest("/api/v1/EmailTests/TestingApplications", Method.GET);
             request.RequestFormat = DataFormat.Json;
 
             var response2 = await restClient.ExecuteTaskAsync<List<TestingApplication>>(request);
@@ -158,7 +158,7 @@ namespace Litmus.Apis.Previews
 
         public List<TestingApplication> GetPageTestingApplications()
         {
-             var request = new RestRequest("GET /api/v1/PageTests/TestingApplications", Method.GET);
+             var request = new RestRequest("/api/v1/PageTests/TestingApplications", Method.GET);
              request.RequestFormat = DataFormat.Json;
             var response2 = restClient.Execute<List<TestingApplication>>(request);
 
@@ -167,7 +167,7 @@ namespace Litmus.Apis.Previews
 
         public async Task<List<TestingApplication>> GetPageTestingApplicationsAsync()
         {
-            var request = new RestRequest("GET /api/v1/PageTests/TestingApplications", Method.GET);
+            var request = new RestRequest("/api/v1/PageTests/TestingApplications", Method.GET);
             request.RequestFormat = DataFormat.Json;
             var response2 = await restClient.ExecuteTaskAsync<List<TestingApplication>>(request);
 
